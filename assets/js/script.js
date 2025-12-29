@@ -1,4 +1,5 @@
 /* ================= PORTFOLIO JAVASCRIPT ================= */
+alert("JS Loaded");
 
 /* ---------- 1. Navbar Scroll Shadow ---------- */
 const header = document.querySelector(".header");
@@ -35,12 +36,14 @@ window.addEventListener("scroll", () => {
 });
 
 
-/* ---------- 3. Skills Progress Bar Animation ---------- */
+/* ---------- 3. Skills Progress Bar Animation (SAFE) ---------- */
 const skillBars = document.querySelectorAll(".skill-bar");
 const skillsSection = document.querySelector("#skills");
 let skillsAnimated = false;
 
 window.addEventListener("scroll", () => {
+    if (!skillsSection) return;
+
     const sectionTop = skillsSection.getBoundingClientRect().top;
     const triggerPoint = window.innerHeight / 1.3;
 
@@ -52,6 +55,7 @@ window.addEventListener("scroll", () => {
         skillsAnimated = true;
     }
 });
+
 
 
 /* ---------- 4. Reveal Sections on Scroll ---------- */
