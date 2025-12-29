@@ -1,5 +1,7 @@
 /* ================= PORTFOLIO JAVASCRIPT ================= */
-alert("JS Loaded");
+
+/* ---------- 0. Debug JS Loaded ---------- */
+// console.log("JS Loaded");
 
 /* ---------- 1. Navbar Scroll Shadow ---------- */
 const header = document.querySelector(".header");
@@ -12,7 +14,6 @@ window.addEventListener("scroll", () => {
     }
 });
 
-
 /* ---------- 2. Active Nav Link on Scroll ---------- */
 const sections = document.querySelectorAll("section, main");
 const navLinks = document.querySelectorAll(".navitem a");
@@ -22,7 +23,7 @@ window.addEventListener("scroll", () => {
 
     sections.forEach(section => {
         const sectionTop = section.offsetTop - 120;
-        if (scrollY >= sectionTop) {
+        if (window.scrollY >= sectionTop) {
             currentSection = section.getAttribute("id");
         }
     });
@@ -35,8 +36,7 @@ window.addEventListener("scroll", () => {
     });
 });
 
-
-/* ---------- 3. Skills Progress Bar Animation (SAFE) ---------- */
+/* ---------- 3. Skills Progress Bar Animation ---------- */
 const skillBars = document.querySelectorAll(".skill-bar");
 const skillsSection = document.querySelector("#skills");
 let skillsAnimated = false;
@@ -55,8 +55,6 @@ window.addEventListener("scroll", () => {
         skillsAnimated = true;
     }
 });
-
-
 
 /* ---------- 4. Reveal Sections on Scroll ---------- */
 const revealElements = document.querySelectorAll(
@@ -77,8 +75,7 @@ const revealOnScroll = () => {
 window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load", revealOnScroll);
 
-
-/* ---------- 5. Smooth Scroll Fix for Anchor Click ---------- */
+/* ---------- 5. Smooth Scroll for Anchor Click ---------- */
 navLinks.forEach(link => {
     link.addEventListener("click", (e) => {
         const targetId = link.getAttribute("href");
@@ -95,7 +92,6 @@ navLinks.forEach(link => {
         }
     });
 });
-
 
 /* ---------- 6. Contact Form Validation ---------- */
 const contactForm = document.querySelector(".contact-form");
@@ -127,10 +123,9 @@ function validateEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-
 /* ---------- 7. Mobile Navbar Toggle ---------- */
 const menuBtn = document.getElementById("menuBtn");
-const navMenu = document.getElementById("navMenu");
+const navMenu = document.querySelector(".navitem"); // fixed: use class selector
 
 if (menuBtn && navMenu) {
     menuBtn.addEventListener("click", () => {
